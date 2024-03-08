@@ -8,27 +8,15 @@ class Program {
 
         Console.Clear();
 
-        var dateTime = DateTime.UtcNow; // hora global
+        Console.WriteLine(DateTime.DaysInMonth(2020, 2));
+        Console.WriteLine(IsWeekend(DateTime.Now.DayOfWeek));
 
-        Console.WriteLine(dateTime);
-        Console.WriteLine(dateTime.ToLocalTime());
+    }
 
-        var timezoneAustralia = TimeZoneInfo.FindSystemTimeZoneById("Pacific/Auckland");
-        Console.Write(timezoneAustralia.ToString());
-
-        var horaAustralia = TimeZoneInfo.ConvertTimeFromUtc(dateTime, timezoneAustralia);
-        Console.WriteLine(horaAustralia);
-
-        // lista todos os tempos cadastrados.
-        var timezones = TimeZoneInfo.GetSystemTimeZones();
-        foreach (var timezone in timezones)
-        {
-            Console.WriteLine(timezone.Id);
-            Console.WriteLine(timezone);
-            Console.WriteLine(TimeZoneInfo.ConvertTimeFromUtc(dateTime, timezone));
-            Console.WriteLine("--------------");
-        }
-
+    // verificar se é final de semana, sábado e domingo
+    static bool IsWeekend(DayOfWeek day)
+    {
+        return day == DayOfWeek.Saturday || day == DayOfWeek.Sunday;
     }
 
    
